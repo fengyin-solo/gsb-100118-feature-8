@@ -33,3 +33,39 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .link { border: none; background: none; color: var(--brand); cursor: pointer; padding: 0; }
 .page-foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--muted); }
 .error-text { color: #b42318; }
+.ok-text { color: #067647; }
+
+/* 修订台账：状态、徽标、弹层、轨迹、计划明细 */
+.status-tag { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; }
+.st-pending { background: #fffaeb; color: #b54708; border: 1px solid #fedf89; }
+.st-ok { background: #ecfdf3; color: #067647; border: 1px solid #abefc6; }
+.st-reject { background: #fef3f2; color: #b42318; border: 1px solid #fecdca; }
+.warn-badge { display: inline-block; margin-left: 6px; padding: 0 6px; font-size: 11px; color: #b54708; background: #fffaeb; border: 1px solid #fedf89; border-radius: 8px; cursor: help; }
+.link.danger { color: #b42318; }
+.modal-mask { position: fixed; inset: 0; background: rgba(16, 24, 40, .45); display: flex; align-items: center; justify-content: center; z-index: 50; padding: 24px; }
+.modal { background: #fff; border-radius: 10px; padding: 18px 20px; width: 480px; max-height: 88vh; overflow-y: auto; box-shadow: 0 12px 40px rgba(16, 24, 40, .25); }
+.modal-wide { width: 720px; }
+.modal h3 { margin: 0 0 6px; font-size: 16px; }
+.modal h4 { margin: 14px 0 6px; font-size: 14px; }
+.form-line { display: flex; flex-direction: column; gap: 4px; margin: 10px 0; font-size: 13px; }
+.form-line span { color: var(--muted); font-size: 12px; }
+.form-line input, .form-line select, .filter-item select { border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-size: 13px; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 14px; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px 12px; margin: 8px 0; }
+.detail-grid div { background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-size: 12px; }
+.detail-grid span { display: block; color: var(--muted); }
+.warn-box { background: #fffaeb; border: 1px solid #fedf89; color: #b54708; padding: 8px 10px; border-radius: 6px; font-size: 13px; }
+.muted-box, .muted { color: var(--muted); font-size: 12px; }
+.track-svg { width: 100%; height: 150px; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; }
+.road-line { stroke: #94a3b8; stroke-width: 3; }
+.dot-old { fill: #94a3b8; }
+.dot-now { fill: #1f6feb; stroke: #fff; stroke-width: 2; }
+.svg-label { font-size: 10px; fill: #334155; }
+.svg-sub { font-size: 9px; fill: #64748b; }
+.impact-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.impact-list, .impact-listing { list-style: none; margin: 0; padding: 0; }
+.impact-list li, .impact-listing li { border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; margin-bottom: 6px; font-size: 12px; }
+.plan-box { margin-top: 8px; }
+.data-table.mini th, .data-table.mini td { padding: 5px 8px; font-size: 12px; }
+.rev-chip { font-family: ui-monospace, monospace; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 6px; padding: 1px 6px; font-size: 12px; }
+.mat-chip { display: inline-block; margin: 1px 4px 1px 0; padding: 1px 8px; background: #f1f5f9; border-radius: 10px; font-size: 12px; color: #334155; }

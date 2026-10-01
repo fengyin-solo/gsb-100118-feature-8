@@ -3,7 +3,7 @@
     <header class="page-head">
       <div>
         <h2>交安设施管理</h2>
-        <p class="page-desc">维护交安设施，围绕设施编号、设施类型、所属路段、桩号位置做登记、筛选与状态流转。</p>
+        <p class="page-desc">维护交安设施，围绕设施编号、设施类型、所属路段、桩号位置做登记、筛选与状态流转；位号、责任组与桩号以“设施修订台账”审批结论为准。</p>
       </div>
       <div class="page-actions">
         <button class="btn primary" type="button" @click="openCreate">登记交安设施</button>
@@ -47,6 +47,7 @@
             >
               {{ action }}
             </button>
+            <router-link class="link" :to="`/facility_revision?facility_id=${row.id}`">修订轨迹</router-link>
           </td>
         </tr>
         <tr v-if="!rows.length">
@@ -70,7 +71,7 @@ import { request } from '@/api/client'
 type Row = Record<string, string | number | null>
 
 const ENDPOINT = '/api/traffic_facility'
-const columns = ["设施编号", "设施类型", "所属路段", "桩号位置", "设置日期", "反光等级", "完好程度", "设施状态"]
+const columns = ["设施编号", "设施类型", "所属路段", "桩号位置", "位号", "责任组", "设置日期", "反光等级", "完好程度", "设施状态", "最新修订号"]
 const actions = ["登记污损", "登记缺失", "更换设施"]
 const statuses = ["完好", "污损", "缺失", "已更换"]
 const stats = [{"label": "完好设施", "value": 0}, {"label": "污损设施", "value": 0}, {"label": "缺失设施", "value": 0}]

@@ -12,7 +12,7 @@ router = APIRouter(prefix="/api/traffic_facility", tags=["交安设施"])
 
 service = TrafficFacilityService()
 
-LIST_FIELDS = ["设施编号", "设施类型", "所属路段", "桩号位置", "设置日期", "反光等级", "完好程度", "设施状态"]
+LIST_FIELDS = ["设施编号", "设施类型", "所属路段", "桩号位置", "位号", "责任组", "设置日期", "反光等级", "完好程度", "设施状态", "最新修订号"]
 STATUSES = ["完好", "污损", "缺失", "已更换"]
 
 

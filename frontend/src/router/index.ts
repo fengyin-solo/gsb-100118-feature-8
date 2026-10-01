@@ -8,6 +8,8 @@ const Bridge = () => import('@/views/bridge/index.vue')
 const BridgeInfo = () => import('@/views/bridge_info/index.vue')
 const Tunnel = () => import('@/views/tunnel/index.vue')
 const TrafficFacility = () => import('@/views/traffic_facility/index.vue')
+const FacilityRevision = () => import('@/views/facility_revision/index.vue')
+const MaterialPlan = () => import('@/views/material_plan/index.vue')
 const Drainage = () => import('@/views/drainage/index.vue')
 const Green = () => import('@/views/green/index.vue')
 const Lighting = () => import('@/views/lighting/index.vue')
@@ -31,6 +33,8 @@ const router = createRouter({
     { path: '/bridge_info', name: 'bridge_info', component: BridgeInfo },
     { path: '/tunnel', name: 'tunnel', component: Tunnel },
     { path: '/traffic_facility', name: 'traffic_facility', component: TrafficFacility },
+    { path: '/facility_revision', name: 'facility_revision', component: FacilityRevision },
+    { path: '/material_plan', name: 'material_plan', component: MaterialPlan },
     { path: '/drainage', name: 'drainage', component: Drainage },
     { path: '/green', name: 'green', component: Green },
     { path: '/lighting', name: 'lighting', component: Lighting },

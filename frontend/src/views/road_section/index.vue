@@ -2,8 +2,8 @@
   <section class="page" data-module="road_section">
     <header class="page-head">
       <div>
-        <h2>路段管理管理</h2>
-        <p class="page-desc">维护管养路段，围绕路段编号、路段名称、起止桩号、道路等级做登记、筛选与状态流转。</p>
+        <h2>路段管理</h2>
+        <p class="page-desc">维护管养路段，围绕路段编号、路段名称、起止桩号、道路等级做登记、筛选与状态流转；表内“设施修订投影”与设施台账、工程材料计划读取同一条审批修订。</p>
       </div>
       <div class="page-actions">
         <button class="btn primary" type="button" @click="openCreate">登记管养路段</button>
@@ -31,12 +31,21 @@
       <thead>
         <tr>
           <th v-for="column in columns" :key="column">{{ column }}</th>
+          <th>设施修订投影（同读修订台账）</th>
           <th>可执行动作</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="row in rows" :key="String(row.id)">
           <td v-for="column in columns" :key="column">{{ row[column] ?? '—' }}</td>
+          <td>
+            <template v-if="(row['设施修订投影'] as Row[] | undefined)?.length">
+              <span v-for="rev in row['设施修订投影']" :key="rev.revision_id" class="rev-chip" :title="`${rev['设施编号']} ${rev['修订类型']} ${rev['新桩号']} 责任组：${rev['责任组']}`">
+                {{ rev.revision_no }}
+              </span>
+            </template>
+            <span v-else class="muted">无已审批修订</span>
+          </td>
           <td class="row-actions">
             <button
               v-for="action in actions"
@@ -50,7 +59,7 @@
           </td>
         </tr>
         <tr v-if="!rows.length">
-          <td :colspan="columns.length + 1" class="empty-state">暂无路段管理数据，可先登记管养路段</td>
+          <td :colspan="columns.length + 2" class="empty-state">暂无路段管理数据，可先登记管养路段</td>
         </tr>
       </tbody>
     </table>
@@ -67,7 +76,7 @@ import { onMounted, ref } from 'vue'
 
 import { request } from '@/api/client'
 
-type Row = Record<string, string | number | null>
+type Row = Record<string, any>
 
 const ENDPOINT = '/api/road_section'
 const columns = ["路段编号", "路段名称", "起止桩号", "道路等级", "车道数", "路面类型", "管养单位", "路段状态"]

@@ -28,6 +28,31 @@ class EntryPayload(BaseModel):
     remark: str | None = None
 
 
+class RevisionSubmitPayload(BaseModel):
+    """提交一次设施编号位号修订（移位/换型/修复/存量对齐）。"""
+
+    facility_id: int = Field(..., description="交安设施主表 id")
+    revision_type: str = Field(..., description="移位、换型、修复、存量对齐")
+    new_station: str | None = Field(None, description="修订后桩号位置，如 K13+500")
+    new_tag: str | None = Field(None, description="修订后位号；缺省时按新桩号对齐生成")
+    new_facility_type: str | None = Field(None, description="换型后的设施类型")
+    responsible_group: str | None = Field(None, description="申报责任组；与资产验收单冲突时以验收单为准")
+    reason: str | None = None
+    construction_date: str | None = None
+    project_id: int | None = Field(None, description="关联养护工程 id（可空）")
+    message_id: str | None = Field(None, description="上游消息编号，用于重复消息幂等")
+    remark: str | None = None
+
+
+class RevisionDecisionPayload(BaseModel):
+    """修订审批结论：通过或驳回。"""
+
+    approved: bool
+    approver: str | None = None
+    opinion: str | None = None
+    message_id: str | None = Field(None, description="审批消息编号，重复审批直接返回首次结论")
+
+
 
 class RoadSectionEntry(BaseModel):
     """管养路段明细结构。"""
